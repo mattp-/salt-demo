@@ -1,0 +1,4 @@
+pytest
+testinfra
+docker-compose
+pytest_docker_compose
