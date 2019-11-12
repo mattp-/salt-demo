@@ -1,11 +1,6 @@
 version: '2.4'
-x-base:
-    &base
-    ports:
-      - '4505-4506'
 services:
   master:
-    <<: *base
     image: saltstack/salt:latest
     environment:
       SALT_MASTER_CONFIG: '{"auto_accept":true,"file_roots":{"base":["/srv/salt"]}}'
@@ -14,7 +9,6 @@ services:
     volumes:
       - ./salt:/srv/salt:ro
   minion:
-    <<: *base
     image: saltstack/salt:latest
     depends_on:
       - master
